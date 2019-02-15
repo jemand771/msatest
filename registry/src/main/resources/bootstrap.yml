@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: registry
+  cloud:
+    config:
+      uri: http://localhost:8888
+      fail-fast: true
+#      password: ${CONFIG_SERVICE_PASSWORD}
+      password: 123456
+      username: user
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    server:
+      waitTimeInMsWhenSyncEmpty: 0
+      # we may want to change this to a static url or find out how to acces yml properties from inside the value field
+      # eureka.instance.hostname is not defined anywhere and server.port is supplied by the config server
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/

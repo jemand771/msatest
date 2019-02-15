@@ -1,0 +1,9 @@
+server:
+  port: 8080
+
+zuul:
+  routes:
+    status-service:
+      path: /status/**
+      serviceId: status-service
+      stripPrefix: true
